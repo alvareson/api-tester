@@ -30,46 +30,22 @@
       <!-- Tabs of Query Params, Headers and JSON -->
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <button
-            class="nav-link active"
-            id="query-params-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#query-params"
-            type="button"
-            role="tab"
-            aria-controls="query-params"
-            aria-selected="true"
-          >
-            Query Params
-          </button>
+          <button class="nav-link active" id="query-params-tab"
+          data-bs-toggle="tab" data-bs-target="#query-params"
+          type="button" role="tab" aria-controls="query-params"
+          aria-selected="true">Query Params</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="request-headers-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#request-headers"
-            type="button"
-            role="tab"
-            aria-controls="request-headers"
-            aria-selected="false"
-          >
-            Headers
-          </button>
+          <button class="nav-link" id="request-headers-tab"
+          data-bs-toggle="tab" data-bs-target="#request-headers"
+          type="button" role="tab" aria-controls="request-headers"
+          aria-selected="false">Headers</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="json-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#json"
-            type="button"
-            role="tab"
-            aria-controls="json"
-            aria-selected="false"
-          >
-            JSON
-          </button>
+          <button class="nav-link" id="json-tab"
+          data-bs-toggle="tab" data-bs-target="#json"
+          type="button" role="tab" aria-controls="json"
+          aria-selected="false">JSON</button>
         </li>
       </ul>
 
@@ -85,13 +61,54 @@
           <button data-add-request-header-btn class="mt-2 btn btn-outline-success" type="button">Add2</button>
         </div>
 
-        <div class="tab-pane fade show" id="json" role="tabpanel" aria-labelledby="json-tab">
-          <div data-json-request-body class="overflow-auto" style="max-height: 200px;">
-
-          </div>
+        <div class="tab-pane fade" id="json" role="tabpanel" aria-labelledby="json-tab">
+          <!-- <div data-json-request-body class="overflow-auto" style="max-height: 200px;"></div> -->
+          <textarea data-json-request-body class="overflow-auto" style="height: 400px; width: 800px;"></textarea>
         </div>
       </div>
     </form>
+
+    <div class="mt-5 d-none" data-response-section>
+      <h3>Response</h3>
+      <div class="d-flex my-2">
+        <div class="me-3">
+          Status: <span data-status></span>
+        </div>
+        <div class="me-3">
+          Time: <span data-time></span>ms
+        </div>
+        <div class="me-3">
+          Size: <span data-size></span>
+        </div>
+      </div>
+
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="body-tab"
+          data-bs-toggle="tab" data-bs-target="#body"
+          type="button" role="tab" aria-controls="body"
+          aria-selected="true">Body</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="response-headers-tab"
+          data-bs-toggle="tab" data-bs-target="#response-headers"
+          type="button" role="tab" aria-controls="response-headers"
+          aria-selected="false">Headers</button>
+        </li>
+      </ul>
+
+      <!-- Bodies of tabs -->
+      <div class="tab-content p-3 border-top-0 border">
+        <div class="tab-pane fade show active" id="body" role="tabpanel" aria-labelledby="body-tab">
+          <textarea data-json-response-body readonly class="overflow-auto" style="height: 400px; width: 800px;"></textarea>
+          <!-- <div data-json-response-body class="overflow-auto" style="max-height: 200px;"></div> -->
+        </div>
+
+        <div class="tab-pane fade" id="response-headers" role="tabpanel" aria-labelledby="response-headers-tab">
+          <div data-response-headers style="display: grid; grid-template-columns: auto 1fr; gap: .5rem 2rem;"></div>
+        </div>
+      </div>
+    </div>
   </div>
   
   <template data-key-value-template>
