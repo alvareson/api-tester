@@ -1,6 +1,8 @@
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import axios from 'axios'
 
+const form = document.querySelector("[data-form]")
 const queryParamsContainer = document.querySelector('[data-query-params]')
 const requestHeadersContainer = document.querySelector('[data-request-headers]')
 
@@ -32,6 +34,29 @@ function createKeyValuePair() {
   })
   return element
 }
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+  axios({
+    url: document.querySelector('[data-url]').value,
+    method: document.querySelector('[data-method]').value,
+    params: keyValuePairsToObject(queryParamsContainer),
+    headers: keyValuePairsToObject(requestHeadersContainer),
+  }).then(response => {
+    console.log(response)
+  })
+})
+
+function keyValuePairsToObject(container) {
+  const pairs = container.querySelectorAll('[data-key-value-pair]')
+  return [...pairs].reduce((data, pair) => {
+    const key = pair.querySelector('[data-key]').value
+    const value = pair.querySelector('[data-value]').value
+    if (key === '') return data
+    return { ...data, [key]: value }
+  }, {})
+}
+
 
 const darkModeToggle = document.getElementById('darkModeToggle')
 darkModeToggle.addEventListener('click', () => {
